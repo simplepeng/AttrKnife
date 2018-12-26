@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'com.novoda.bintray-release'
+
+dependencies {
+    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+    implementation 'com.squareup:javapoet:1.7.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':attrknife-annotation')
+}
+
+publish {
+    userOrg = rootProject.ext.userOrg
+    groupId = rootProject.ext.groupId
+    artifactId = 'attrbutter_compiler'
+    publishVersion = rootProject.ext.publishVersion
+    desc = rootProject.ext.desc
+    website = rootProject.ext.website
+}
+
+
+
+

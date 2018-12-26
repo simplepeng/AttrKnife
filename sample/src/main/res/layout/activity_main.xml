@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.attrknife.demo.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="xxx" />
+
+    <com.attrknife.demo.CustomView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:test_boolean="false"
+        app:test_color="@android:color/holo_blue_bright"
+        app:test_dimension="@dimen/activity_horizontal_margin"
+        app:test_float="22"
+        app:test_integer="13"
+        app:test_string="测试string"
+        app:test_string2="测试string2" />
+
+</LinearLayout>

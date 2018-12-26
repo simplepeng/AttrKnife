@@ -1,0 +1,1 @@
+include ':sample', ':attrknife-compiler', ':attrknife-annotation', ':attrknife'
