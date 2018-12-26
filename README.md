@@ -6,8 +6,8 @@
 
 ```java
 dependencies {
-	 implementation 'com.simple:attrknife:1.1.1'
-     annotationProcessor 'com.simple:attrknife-compiler:1.1.1'
+    implementation 'com.simple:attrknife:1.1.1'
+    annotationProcessor 'com.simple:attrknife-compiler:1.1.1'
 }
 ```
 
@@ -59,7 +59,7 @@ public class CustomView extends View {
 ```
 
 ```xml
-	<com.attrknife.demo.CustomView
+<com.attrknife.demo.CustomView
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:test_boolean="false"
