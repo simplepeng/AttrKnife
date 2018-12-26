@@ -11,7 +11,7 @@ import attrknife.internal.Const;
 @Target(ElementType.FIELD)
 public @interface AttrDimen {
 
-    int id();
+    int value();
 
-    float defValue() default Const.NO_RES_ID;
+    float def() default Const.DEFAULT_FLOAT;
 }

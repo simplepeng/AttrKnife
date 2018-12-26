@@ -11,8 +11,8 @@ import attrknife.internal.Const;
 @Target(ElementType.FIELD)
 public @interface AttrColor {
 
-    int id();
+    int value();
 
-    int defValue() default Const.DEFAULT_COLOR;
+    int def() default Const.DEFAULT_COLOR;
 
 }

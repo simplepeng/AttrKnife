@@ -8,21 +8,15 @@
     android:orientation="vertical"
     tools:context="com.attrknife.demo.MainActivity">
 
-    <TextView
-        android:id="@+id/tv_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="xxx" />
-
     <com.attrknife.demo.CustomView
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="100dp"
         app:test_boolean="false"
         app:test_color="@android:color/holo_blue_bright"
-        app:test_dimension="@dimen/activity_horizontal_margin"
+        app:test_dimension="16dp"
+        app:test_drawable="@android:color/holo_red_dark"
         app:test_float="22"
         app:test_integer="13"
-        app:test_string="测试string"
-        app:test_string2="测试string2" />
+        app:test_string="测试string" />
 
 </LinearLayout>

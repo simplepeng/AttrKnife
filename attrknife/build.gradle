@@ -7,17 +7,14 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -29,7 +26,7 @@ dependencies {
 publish {
     userOrg = rootProject.ext.userOrg
     groupId = rootProject.ext.groupId
-    artifactId = 'attrbutter_library'
+    artifactId = 'attrknife'
     publishVersion = rootProject.ext.publishVersion
     desc = rootProject.ext.desc
     website = rootProject.ext.website

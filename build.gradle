@@ -28,11 +28,15 @@ ext {
     groupId = "com.simple"
     artifactId = 'AttrKnife'
     publishVersion = '1.1.1'
-    desc = 'https://github.com/simplepeng/AttrButterKnife'
-    website = 'https://github.com/simplepeng/AttrButterKnife'
+    desc = 'https://github.com/simplepeng/AttrKnife'
+    website = 'https://github.com/simplepeng/AttrKnife'
 }
 
 allprojects {
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
     repositories {
         jcenter()
         mavenCentral()
@@ -41,10 +45,7 @@ allprojects {
             name 'Google'
         }
     }
-    tasks.withType(JavaCompile) {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
+
 }
 
 task clean(type: Delete) {

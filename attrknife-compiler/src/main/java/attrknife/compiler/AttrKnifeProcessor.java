@@ -4,6 +4,7 @@ package attrknife.compiler;
 import attrknife.annotation.AttrBool;
 import attrknife.annotation.AttrColor;
 import attrknife.annotation.AttrDimen;
+import attrknife.annotation.AttrDrawable;
 import attrknife.annotation.AttrFloat;
 import attrknife.annotation.AttrInt;
 import attrknife.annotation.AttrString;
@@ -30,6 +31,7 @@ import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
@@ -61,6 +63,11 @@ public class AttrKnifeProcessor extends AbstractProcessor {
         filer = env.getFiler();
     }
 
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.RELEASE_8;
+    }
+
     /**
      * 获取支持的注解
      */
@@ -82,6 +89,7 @@ public class AttrKnifeProcessor extends AbstractProcessor {
         annotations.add(AttrFloat.class);
         annotations.add(AttrColor.class);
         annotations.add(AttrInt.class);
+        annotations.add(AttrDrawable.class);
 
         return annotations;
     }
@@ -159,6 +167,15 @@ public class AttrKnifeProcessor extends AbstractProcessor {
 
             }
         }
+        //解析 AttrDrawable
+        for (Element element : roundEnv.getElementsAnnotatedWith(AttrDrawable.class)) {
+            if (!SuperficialValidation.validateElement(element)) continue;
+            try {
+                parseBindVariable(element, varMap);
+            } catch (Exception e) {
+
+            }
+        }
         return varMap;
     }
 
@@ -173,6 +190,7 @@ public class AttrKnifeProcessor extends AbstractProcessor {
         VariableElement variableElement = (VariableElement) element;
         // 获取属性所在的类名
         String className = element.getEnclosingElement().getSimpleName().toString();
+        
         List<VariableElement> variableElementList = map.get(className);
         if (variableElementList == null) {
             variableElementList = new ArrayList<>();
@@ -221,36 +239,42 @@ public class AttrKnifeProcessor extends AbstractProcessor {
                 AttrBool attrBool = variableElement.getAnnotation(AttrBool.class);
                 if (attrBool != null) {
                     builder.addStatement("view." + varName +
-                            " = ta.getBoolean(" + attrBool.id() + ","
-                            + attrBool.defValue() + ")");
+                            " = ta.getBoolean(" + attrBool.value() + ","
+                            + attrBool.def() + ")");
                 }
 
                 AttrColor attrColor = variableElement.getAnnotation(AttrColor.class);
                 if (attrColor != null) {
                     builder.addStatement("view." + varName +
-                            " = ta.getColor(" + attrColor.id() + ","
-                            + attrColor.defValue() + ")");
+                            " = ta.getColor(" + attrColor.value() + ","
+                            + attrColor.def() + ")");
                 }
 
                 AttrDimen attrDimen = variableElement.getAnnotation(AttrDimen.class);
                 if (attrDimen != null) {
                     builder.addStatement("view." + varName +
-                            " = ta.getDimension(" + attrDimen.id() + ","
-                            + attrDimen.defValue() + "f)");
+                            " = ta.getDimension(" + attrDimen.value() + ","
+                            + attrDimen.def() + "f)");
                 }
 
                 AttrFloat attrFloat = variableElement.getAnnotation(AttrFloat.class);
                 if (attrFloat != null) {
                     builder.addStatement("view." + varName +
-                            " = ta.getFloat(" + attrFloat.id() + ","
-                            + attrFloat.defValue() + "f)");
+                            " = ta.getFloat(" + attrFloat.value() + ","
+                            + attrFloat.def() + "f)");
                 }
 
                 AttrInt attrInt = variableElement.getAnnotation(AttrInt.class);
                 if (attrInt != null) {
                     builder.addStatement("view." + varName +
-                            " = ta.getInteger(" + attrInt.id() + ","
-                            + attrInt.defValue() + ")");
+                            " = ta.getInteger(" + attrInt.value() + ","
+                            + attrInt.def() + ")");
+                }
+
+                AttrDrawable attrDrawable = variableElement.getAnnotation(AttrDrawable.class);
+                if (attrDrawable != null) {
+                    builder.addStatement("view." + varName +
+                            " = ta.getDrawable(" + attrDrawable.value() + ")");
                 }
 
             }

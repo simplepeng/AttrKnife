@@ -11,7 +11,8 @@ import attrknife.internal.Const;
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
 public @interface AttrInt {
-    int id();
 
-    int defValue() default Const.DEFAULT_INT;
+    int value();
+
+    int def() default Const.DEFAULT_INT;
 }

@@ -3,6 +3,7 @@ package com.attrknife.demo;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.AttrRes;
 import android.support.annotation.StyleRes;
 import android.support.annotation.StyleableRes;
@@ -13,6 +14,7 @@ import android.view.View;
 import attrknife.annotation.AttrBool;
 import attrknife.annotation.AttrColor;
 import attrknife.annotation.AttrDimen;
+import attrknife.annotation.AttrDrawable;
 import attrknife.annotation.AttrFloat;
 import attrknife.annotation.AttrInt;
 import attrknife.annotation.AttrString;
@@ -24,23 +26,23 @@ public class CustomView extends View {
     @AttrString(R.styleable.CustomView_test_string)
     String testString;
 
-    @AttrString(R.styleable.CustomView_test_string2)
-    String testString2;
-
-    @AttrBool(id = R.styleable.CustomView_test_boolean)
+    @AttrBool(R.styleable.CustomView_test_boolean)
     boolean testBoolean;
 
-    @AttrDimen(id = R.styleable.CustomView_test_dimension)
+    @AttrDimen(R.styleable.CustomView_test_dimension)
     float testDimension;
 
-    @AttrColor(id = R.styleable.CustomView_test_color)
+    @AttrColor(R.styleable.CustomView_test_color)
     int testColor;
 
-    @AttrFloat(id = R.styleable.CustomView_test_float)
+    @AttrFloat(R.styleable.CustomView_test_float)
     float testFloat;
 
-    @AttrInt(id = R.styleable.CustomView_test_integer)
+    @AttrInt(R.styleable.CustomView_test_integer)
     int testInteger;
+
+    @AttrDrawable(R.styleable.CustomView_test_drawable)
+    Drawable testDrawable;
 
     public CustomView(Context context) {
         this(context, null);
@@ -59,20 +61,20 @@ public class CustomView extends View {
         AttrKnife.bind(this, ta);
 
 
-        Log.e("CustomView", "testString==" + testString);
-        Log.e("CustomView", "testString2==" + testString2);
-        Log.e("CustomView", "testBoolean==" + testBoolean);
-        Log.e("CustomView", "testDimension==" + testDimension);
-        Log.e("CustomView", "testColor==" + testColor);
-        Log.e("CustomView", "testFloat==" + testFloat);
-        Log.e("CustomView", "testInteger==" + testInteger);
-
+        Log.e("CustomView", "testString == " + testString);
+        Log.e("CustomView", "testBoolean == " + testBoolean);
+        Log.e("CustomView", "testDimension == " + testDimension);
+        Log.e("CustomView", "testColor == " + testColor);
+        Log.e("CustomView", "testFloat == " + testFloat);
+        Log.e("CustomView", "testInteger == " + testInteger);
+        setBackground(testDrawable);
 
 //        try {
 //            testString = ta.getString(R.styleable.CustomView_test_string);
 //            testString2 = ta.getString(R.styleable.CustomView_test_string2);
 //            testBoolean = ta.getBoolean(R.styleable.CustomView_test_boolean, false);
 //            testDimension = ta.getDimension(R.styleable.CustomView_test_dimension, 19);
+//        testDrawable = ta.getDrawable(R.styleable.CustomView_test_drawable);
 //            testColor = ta.getColor(R.styleable.CustomView_test_color, Color.BLACK);
 //            testFloat = ta.getFloat(R.styleable.CustomView_test_float, 10);
 //            testInteger = ta.getInteger(R.styleable.CustomView_test_integer, 10);

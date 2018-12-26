@@ -1,9 +1,12 @@
 apply plugin: 'java'
 apply plugin: 'com.novoda.bintray-release'
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 dependencies {
     implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    implementation 'com.squareup:javapoet:1.7.0'
+    implementation 'com.squareup:javapoet:1.9.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':attrknife-annotation')
 }
@@ -11,7 +14,7 @@ dependencies {
 publish {
     userOrg = rootProject.ext.userOrg
     groupId = rootProject.ext.groupId
-    artifactId = 'attrbutter_compiler'
+    artifactId = 'attrknife-compiler'
     publishVersion = rootProject.ext.publishVersion
     desc = rootProject.ext.desc
     website = rootProject.ext.website

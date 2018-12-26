@@ -11,7 +11,7 @@ import attrknife.internal.Const;
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
 public @interface AttrBool {
-    int id();
+    int value();
 
-    boolean defValue() default Const.DEFAULT_BOOL;
+    boolean def() default Const.DEFAULT_BOOL;
 }
