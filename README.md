@@ -6,8 +6,8 @@
 
 ```java
 dependencies {
-    implementation 'com.simple:attrknife:1.1.1'
-    annotationProcessor 'com.simple:attrknife-compiler:1.1.1'
+    implementation 'com.simple:attrknife:1.1.2'
+    annotationProcessor 'com.simple:attrknife-compiler:1.1.2'
 }
 ```
 

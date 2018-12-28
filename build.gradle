@@ -4,10 +4,7 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
@@ -27,7 +24,7 @@ ext {
     userOrg = "simplepeng"
     groupId = "com.simple"
     artifactId = 'AttrKnife'
-    publishVersion = '1.1.1'
+    publishVersion = '1.1.2'
     desc = 'https://github.com/simplepeng/AttrKnife'
     website = 'https://github.com/simplepeng/AttrKnife'
 }
@@ -40,10 +37,7 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
+        google()
     }
 
 }

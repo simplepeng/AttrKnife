@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    
+
     defaultConfig {
         applicationId "com.simple.attrbutterknife"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -31,6 +31,7 @@ dependencies {
 
     annotationProcessor project(':attrknife-compiler')
     implementation project(':attrknife')
-//    implementation 'com.simplepeng:attrbutter_library:1.1.0'
-//    annotationProcessor 'com.simplepeng:attrbutter_compiler:1.1.0'
+
+    implementation 'com.simple:attrknife:1.1.2'
+    annotationProcessor 'com.simple:attrknife-compiler:1.1.1'
 }
